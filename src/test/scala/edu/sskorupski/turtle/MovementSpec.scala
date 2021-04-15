@@ -1,5 +1,6 @@
 package edu.sskorupski.turtle
 
+import edu.sskorupski.turtle.Movement.{Backward, Forward, ToLeft, ToRight}
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers.convertToAnyShouldWrapper
 
@@ -9,35 +10,35 @@ class MovementSpec extends AnyFlatSpec {
     // Given
     val action = "F"
     // When
-    val movement = Movement.apply(action)
+    val movement = Movement(action)
     // Then
-    movement shouldBe Forward
+    movement shouldBe Right(Forward)
   }
 
   it should "return Backward WITH B" in {
     // Given
     val action = "B"
     // When
-    val movement = Movement.apply(action)
+    val movement = Movement(action)
     // Then
-    movement shouldBe Backward
+    movement shouldBe Right(Backward)
   }
 
   it should "return Backward WITH L" in {
     // Given
     val action = "L"
     // When
-    val movement = Movement.apply(action)
+    val movement = Movement(action)
     // Then
-    movement shouldBe Left
+    movement shouldBe Right(ToLeft)
   }
 
   it should "return Backward WITH R" in {
     // Given
     val action = "R"
     // When
-    val movement = Movement.apply(action)
+    val movement = Movement(action)
     // Then
-    movement shouldBe Right
+    movement shouldBe Right(ToRight)
   }
 }
